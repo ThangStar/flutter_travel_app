@@ -1,12 +1,9 @@
 # travel_app
 
-A new Flutter project.
+![Group 67](https://github.com/ThangStar/flutter_travel_app/assets/52882277/7ed3287a-f3bc-4fd0-a248-4125b8b1d624)
 
-## Getting Started
+![Group 627](https://github.com/ThangStar/flutter_travel_app/assets/52882277/524c0f2b-79a6-47e9-8704-ed9365995e38)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
