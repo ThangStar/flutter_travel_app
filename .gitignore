@@ -43,7 +43,3 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Ignore everything in this directory
-*
-# Except this file
-!.gitignore
