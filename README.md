@@ -2,7 +2,7 @@
 
 ![Group 67](https://github.com/ThangStar/flutter_travel_app/assets/52882277/7ed3287a-f3bc-4fd0-a248-4125b8b1d624)
 
-![Group 627](https://github.com/ThangStar/flutter_travel_app/assets/52882277/524c0f2b-79a6-47e9-8704-ed9365995e38)
+![Group 627](https://github.com/ThangStar/flutter_travel_app/assets/52882277/5c123689-64ed-459c-87fd-d075207de6c7)
 
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
