@@ -2,8 +2,10 @@
 
 ![Group 67](https://github.com/ThangStar/flutter_travel_app/assets/52882277/7ed3287a-f3bc-4fd0-a248-4125b8b1d624)
 
-![Group 627](https://github.com/ThangStar/flutter_travel_app/assets/52882277/5c123689-64ed-459c-87fd-d075207de6c7)
 
+![Group 77](https://github.com/ThangStar/flutter_travel_app/assets/52882277/2cc49c2e-d646-4cf5-80fc-7016ebae51c8)
+
+![Group 627](https://github.com/ThangStar/flutter_travel_app/assets/52882277/5c123689-64ed-459c-87fd-d075207de6c7)
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
