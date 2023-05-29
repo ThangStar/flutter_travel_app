@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//add 0xff{your hex} -> 100%
 ThemeData lightTheme = ThemeData(
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     headlineMedium: TextStyle(
       color: Colors.black
     )
@@ -13,7 +14,7 @@ ThemeData lightTheme = ThemeData(
         .roboto()
         .fontFamily,
     colorScheme: const ColorScheme.light(
-        background: Colors.red,
+        background: Color(0xff5b5296),
         brightness: Brightness.light,
         onSurface: Colors.amber,
         surface: Colors.green
@@ -25,5 +26,6 @@ ThemeData darkTheme = ThemeData(
         .roboto()
         .fontFamily,
     colorScheme: const ColorScheme.dark(
+      onSurface: Colors.deepOrangeAccent,
       background: Colors.black12,),
     useMaterial3: true);

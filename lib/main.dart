@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/config/theme/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/config/font/text_theme.dart';
+import 'package:travel_app/config/theme/color_schemes.dart';
+import 'package:travel_app/screens/bottom_nav_main/home/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,25 +28,32 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: isDarkTheme ? darkTheme : lightTheme,
-      home: MyHomePage(
-          title: 'Flutter Demo Home Page',
-          callbackAction: _incrementCounter,
-          isDarkTheme: isDarkTheme
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: isDarkTheme ? darkColorScheme : lightColorScheme,
+            textTheme: textTheme),
+        // darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+        //   home: MyHomePage(
+        //       title: 'Flutter Demo Home Page',
+        //       callbackAction: _incrementCounter,
+        //       isDarkTheme: isDarkTheme),
+        // );
+        home: HomeScreen());
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage(
-      {super.key, required this.title, required this.callbackAction, required this.isDarkTheme});
+      {super.key,
+      required this.title,
+      required this.callbackAction,
+      required this.isDarkTheme});
 
   final String title;
   final VoidCallback callbackAction;
   final bool isDarkTheme;
-
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -54,10 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text("this is app bar"),
       ),
       body: Center(
@@ -69,17 +76,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '${widget.isDarkTheme}',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headlineMedium,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Card(
+              child:
+                  Container(padding: EdgeInsets.all(12), child: Text("hello")),
             ),
             Container(
-              color: Theme.of(context).colorScheme.surface,
               width: 200,
               height: 200,
-              child: Center(child: Container(width: 50, height: 50, color: Theme.of(context).colorScheme.onSurface, )),
-            )
+              child: Center(child: Container(width: 50, height: 50)),
+            ),
+            TapRegionSurface(
+                child: Container(
+              color: Theme.of(context).cardColor,
+              width: 100,
+              height: 100,
+            ))
           ],
         ),
       ),

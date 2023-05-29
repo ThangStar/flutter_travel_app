@@ -1,0 +1,1 @@
+const String NAME_APP = "Travel app";
