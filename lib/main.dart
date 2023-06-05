@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_app/blocs/near_me/near_me_bloc.dart';
 import 'package:travel_app/config/font/text_theme.dart';
 import 'package:travel_app/config/theme/color_schemes.dart';
+import 'package:travel_app/blocs/home/home_bloc.dart';
+import 'package:travel_app/screens/bottom_nav_main/bottom_nav_main.dart';
 import 'package:travel_app/screens/bottom_nav_main/home/home_screen.dart';
+import 'package:travel_app/screens/bottom_nav_main/near_me/near_me_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,20 +31,35 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => NearMeBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        initialRoute: "/",
+        routes: {
+          "/": (context) => const BottomNavMain(),
+          "/location": (context) => const NearMeScreen()
+        },
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
             useMaterial3: true,
             colorScheme: isDarkTheme ? darkColorScheme : lightColorScheme,
             textTheme: textTheme),
-        // darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+        darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
         //   home: MyHomePage(
         //       title: 'Flutter Demo Home Page',
         //       callbackAction: _incrementCounter,
         //       isDarkTheme: isDarkTheme),
         // );
-        home: HomeScreen());
+      ),
+    );
   }
 }
 

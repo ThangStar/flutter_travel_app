@@ -1,4 +1,4 @@
-part of 'profile_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class ProfileState extends Equatable {
   const ProfileState();

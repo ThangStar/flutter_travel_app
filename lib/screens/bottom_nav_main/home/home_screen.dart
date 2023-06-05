@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/config/app_release.dart';
 import 'package:travel_app/config/theme/color_schemes.dart';
-import 'package:travel_app/screens/widgets/my_list_chip.dart';
+import 'package:travel_app/blocs/home/home_bloc.dart';
+import 'package:travel_app/screens/widgets/my_bottom_nav.dart';
+import 'package:travel_app/screens/widgets/my_chip.dart';
 import 'package:travel_app/screens/widgets/my_search_bar.dart';
 
 import '../../widgets/my_drawer.dart';
@@ -93,18 +96,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 16,
                     ),
                     const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ItemIconFeedback(
-                            title: "Tệ",
-                            imageUri: "assets/images/bad.png"),
+                            title: "Tệ", imageUri: "assets/images/bad.png"),
                         ItemIconFeedback(
                           title: "Ổn",
                           imageUri: "assets/images/fine.png",
                         ),
                         ItemIconFeedback(
-                            title: "Tốt",
-                            imageUri: "assets/images/well.png"),
+                            title: "Tốt", imageUri: "assets/images/well.png"),
                         ItemIconFeedback(
                           title: "Tuyệt vời",
                           imageUri: "assets/images/wonderful.png",
@@ -129,25 +130,63 @@ class BodyHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: 22,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Vị trí", style: Theme.of(context).textTheme.titleSmall,),
-              Text("Xem tất cả", style:TextStyle(fontSize: 12, color: colorScheme(context).onBackground.withOpacity(0.6)))
-            ],
+          SizedBox(
+            height: 22,
           ),
-          SizedBox(height: 12,),
-          MyListChip()
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Vị trí",
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                Text("Xem tất cả",
+                    style: TextStyle(
+                        fontSize: 12,
+                        color:
+                            colorScheme(context).onBackground.withOpacity(0.6)))
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Flexible(
+              child: ListView(
+                  shrinkWrap: true,
+                  primary: true,
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16 ),
+                  children: <Widget>[
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: List<Widget>.generate(listChip.length, (index) {
+                    return BlocBuilder<HomeBloc, HomeState>(
+                      builder: (context, state) {
+                        return MyChip(
+                          label: listChip[index],
+                          isSelected: state.positionSelected == index,
+                          onChange: (bool value) {
+                            BlocProvider.of<HomeBloc>(context).add(
+                                OnChangeChip(posTap: index));
+                          },
+                        );
+                      },
+                    );
+                  }),
+                )
+              ]))
         ],
       ),
     );
   }
 }
-
 
 class ItemIconFeedback extends StatelessWidget {
   const ItemIconFeedback(
