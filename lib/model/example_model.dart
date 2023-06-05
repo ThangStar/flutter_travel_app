@@ -1,8 +1,8 @@
 //Your object here
-class ExampleObject{
+class ExampleObject {
   String name;
   int age;
   double height;
 
-  ExampleObject(this.name, this.age, this.height);
+  ExampleObject({required this.name, required this.age, required this.height});
 }
